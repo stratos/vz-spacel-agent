@@ -1,0 +1,51 @@
+---
+name: spacel-agent-{system.release}-{system.architecture}-{provider.virtualization}-{%Y}{%m}{%d}T{%H}{%M}{%S}
+provider:
+  name: ec2
+  virtualization: hvm
+  enhanced_networking: simple
+  description: Debian {system.release} {system.architecture}
+bootstrapper:
+  workspace: /target
+  include_packages:
+    - apt-transport-https
+system:
+  release: jessie
+  architecture: amd64
+  bootloader: extlinux
+  charmap: UTF-8
+  locale: en_US
+  timezone: UTC
+volume:
+  backing: ebs
+  partitions:
+    type: none
+    root:
+      filesystem: ext4
+      size: 4GiB
+packages:
+  mirror: https://cloudfront.debian.net/debian
+  install_standard: false
+  trusted-keys:
+    - /etc/apt/trusted.gpg.d/debian-archive-jessie-automatic.gpg
+    - /etc/apt/trusted.gpg.d/debian-archive-jessie-security-automatic.gpg
+    - /etc/apt/trusted.gpg.d/debian-archive-jessie-stable.gpg
+    - /app/manifests/docker.gpg
+  sources:
+    docker:
+      - deb http://apt.dockerproject.org/repo/ debian-jessie main
+  install:
+    - dbus
+    - docker-engine
+    - python-dbus
+    - python-pip
+plugins:
+  cloud_init:
+    metadata_sources: Ec2
+    username: space
+    groups:
+      - docker
+  pip_install:
+    packages:
+      - git+https://github.com/thepwagner/python-systemd
+      - git+https://github.com/mycloudandme/spacel-agent
