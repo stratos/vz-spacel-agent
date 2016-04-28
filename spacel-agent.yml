@@ -47,5 +47,5 @@ plugins:
       - docker
   pip_install:
     packages:
-      - git+https://github.com/thepwagner/python-systemd
-      - git+https://github.com/mycloudandme/spacel-agent
+      - https://github.com/thepwagner/python-systemd/tarball/master#egg=python-systemd-0.1-planning-0
+      - https://github.com/mycloudandme/spacel-agent/tarball/master#egg=spacel-agent-0.0.1
