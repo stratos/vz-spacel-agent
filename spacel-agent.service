@@ -1,0 +1,10 @@
+[Unit]
+Description=Space Elevator agent
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python -m spacel.main
+
+[Install]
+WantedBy=multi-user.target

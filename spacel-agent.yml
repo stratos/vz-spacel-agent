@@ -49,3 +49,10 @@ plugins:
     packages:
       - https://github.com/thepwagner/python-systemd/tarball/master#egg=python-systemd-0.1-planning-0
       - https://github.com/mycloudandme/spacel-agent/tarball/master#egg=spacel-agent-0.0.1
+  file_copy:
+    files:
+      -
+        src: /app/manifests/spacel-agent.service
+        dst: /etc/systemd/system/multi-user.target.wants/spacel-agent.service
+        permissions: "644"
+        owner: root
