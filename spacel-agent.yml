@@ -45,6 +45,10 @@ plugins:
     username: space
     groups:
       - docker
+    disable_modules:
+      - byobu
+      - landscape
+      - mounts
   pip_install:
     packages:
       - https://github.com/thepwagner/python-systemd/tarball/master#egg=python-systemd-0.1-planning-0
