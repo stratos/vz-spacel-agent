@@ -60,3 +60,23 @@ plugins:
         dst: /etc/systemd/system/multi-user.target.wants/spacel-agent.service
         permissions: "644"
         owner: root
+      -
+        src: /app/manifests/scripts/keys
+        dst: /opt/spacel/keys
+        permissions: "755"
+        owner: root
+      -
+        src: /app/manifests/sshd_config
+        dst: /etc/ssh/sshd_config
+        permissions: "644"
+        owner: root
+      -
+        src: /app/manifests/motd
+        dst: /etc/motd
+        permissions: "644"
+        owner: root
+    mkdirs:
+      -
+        dir: /opt/spacel
+        permissions: "755"
+        owner: root
