@@ -12,17 +12,17 @@ bootstrapper:
 system:
   release: jessie
   architecture: amd64
-  bootloader: extlinux
+  bootloader: grub
   charmap: UTF-8
   locale: en_US
   timezone: UTC
 volume:
   backing: ebs
   partitions:
-    type: none
+    type: gpt
     root:
       filesystem: ext4
-      size: 4GiB
+      size: 8GiB
 packages:
   mirror: https://cloudfront.debian.net/debian
   install_standard: false
@@ -39,6 +39,7 @@ packages:
     - docker-engine
     - python-dbus
     - python-pip
+    - aufs-tools
 plugins:
   cloud_init:
     metadata_sources: Ec2
@@ -52,7 +53,7 @@ plugins:
   pip_install:
     packages:
       - https://github.com/thepwagner/python-systemd/tarball/master#egg=python-systemd-0.1-planning-0
-      - https://github.com/mycloudandme/spacel-agent/tarball/master#egg=spacel-agent-0.0.1
+      - https://github.com/pebble/spacel-agent/tarball/master#egg=spacel-agent-0.0.1
   file_copy:
     files:
       -
@@ -80,3 +81,6 @@ plugins:
         dir: /opt/spacel
         permissions: "755"
         owner: root
+  ec2_publish:
+    manifest_url: https://pebble-amis.s3-us-west-2.amazonaws.com/spacel/latest.json
+    public: true
