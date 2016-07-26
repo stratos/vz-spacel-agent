@@ -84,3 +84,5 @@ plugins:
   ec2_publish:
     manifest_url: https://pebble-amis.s3-us-west-2.amazonaws.com/spacel/latest.json
     public: true
+    regions:
+     - us-east-1
