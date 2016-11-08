@@ -46,6 +46,7 @@ plugins:
     username: space
     groups:
       - docker
+      - systemd-journal
     disable_modules:
       - byobu
       - landscape
