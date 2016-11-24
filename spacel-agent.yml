@@ -88,6 +88,11 @@ plugins:
         dst: /etc/systemd/system/cloudwatch-stats.service
         permissions: "644"
         owner: root
+      -
+        src: /app/manifests/docker.service
+        dst: /lib/systemd/system/docker.service
+        permissions: "644"
+        owner: root
     mkdirs:
       -
         dir: /opt/spacel
