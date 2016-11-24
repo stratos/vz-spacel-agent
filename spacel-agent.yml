@@ -77,6 +77,11 @@ plugins:
         dst: /etc/motd
         permissions: "644"
         owner: root
+      -
+        src: /app/manifests/developer.sh
+        dst: /usr/local/bin/developer.sh
+        permissions: "755"
+        owner: root
     mkdirs:
       -
         dir: /opt/spacel
