@@ -55,6 +55,7 @@ plugins:
     packages:
       - https://github.com/thepwagner/python-systemd/tarball/master#egg=python-systemd-0.1-planning-0
       - https://github.com/pebble/spacel-agent/tarball/master#egg=spacel-agent-0.0.1
+      - https://github.com/pebble/cloudwatch-mon-scripts-python/tarball/master#egg=cloudwatchmon-2.0.4
   file_copy:
     files:
       -
@@ -81,6 +82,11 @@ plugins:
         src: /app/manifests/developer.sh
         dst: /usr/local/bin/developer.sh
         permissions: "755"
+        owner: root
+      -
+        src: /app/manifests/cloudwatch-stats.service
+        dst: /etc/systemd/system/cloudwatch-stats.service
+        permissions: "644"
         owner: root
     mkdirs:
       -
